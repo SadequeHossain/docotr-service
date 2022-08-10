@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import Banner from '../Banner/Banner';
 // import Container from 'react-bootstrap/Container';
 import { Container, Row, Col } from 'react-bootstrap';
@@ -18,12 +18,33 @@ import HeartImg from '../../Images/HeartTreatment.jpg';
 import FamilyImg from '../../Images/family.jpg';
 import ServiceImg from '../../Images/service.jpg';
 import PhotoAlbum from "react-photo-album";
+import Carousel from 'react-multi-carousel';
+import { UserContext } from '../../App';
+import DisplayDoctor from '../hooks/DisplayDoctors/DisplayDoctor';
 
 
 
 
 const Home = () => {
+    const doctors = useContext(UserContext);
 
+    const responsive = {
+        desktop: {
+            breakpoint: { max: 3000, min: 1024 },
+            items: 4,
+            slidesToSlide: 3 // optional, default to 1.
+        },
+        tablet: {
+            breakpoint: { max: 1024, min: 464 },
+            items: 2,
+            slidesToSlide: 2 // optional, default to 1.
+        },
+        mobile: {
+            breakpoint: { max: 464, min: 0 },
+            items: 1,
+            slidesToSlide: 1 // optional, default to 1.
+        }
+    };
     // const photos = [
     //     {
     //         src: {genHealthImg},
@@ -60,7 +81,7 @@ const Home = () => {
                     <div >
                         <h1> <RiFirstAidKitLine></RiFirstAidKitLine> Appointment:</h1>
                         <p> Book your online Doctor here</p>
-                        <button className="btn btn-dark">Chek Appointment</button>
+                        <button className="btn btn-dark">Check Appointment</button>
                     </div>
 
                 </Col>
@@ -175,45 +196,66 @@ const Home = () => {
 
 
             </Row>
-            
+
 
             <Row>
-            <Col lg={6} md={6} s={12} className="Specialize-div">
-               <div>
-                <h1>Why Choos Us? </h1>
+                <Col lg={6} md={6} s={12} className="Specialize-div">
+                    <div>
+                        <h1>Why Choos Us? </h1>
 
-                <ul>
-                    <li>We are always carefull to our patient and service</li>
-                    <li>Book and appoinment with any specialist anytime</li>
-                    <li>We offer lot of service in a best price</li>
-                    <li>Online payment seystem with different method</li>
-                </ul>
-               </div>
-            </Col>
-            <Col lg={6} md={6} s={12} className="Specialize-div">
-            <Image fluid src={ServiceImg} alt=""></Image>  
-            </Col>
+                        <ul>
+                            <li>We are always carefull to our patient and service</li>
+                            <li>Book and appoinment with any specialist anytime</li>
+                            <li>We offer lot of service in a best price</li>
+                            <li>Online payment seystem with different method</li>
+                        </ul>
+                    </div>
+                </Col>
+                <Col lg={6} md={6} s={12} className="Specialize-div">
+                    <Image fluid src={ServiceImg} alt=""></Image>
+                </Col>
             </Row>
 
+            <Row className="Specialize-div">
+                <h1 className='title-div'>Meet Our Doctors</h1>
+                <Carousel
+
+
+                    swipeable={true}
+                    draggable={true}
+                    showDots={true}
+                    responsive={responsive}
+                    ssr={true} // means to render carousel on server-side.
+                    infinite={true}
+                    autoPlay={false}
+                    autoPlaySpeed={1100}
+                    keyBoardControl={true}
+                    customTransition="all 1"
+                    transitionDuration={500}
+                    containerClass="carousel-container"
+                    removeArrowOnDeviceType={["tablet", "mobile"]}
+                    // deviceType={this.props.deviceType}
+                    dotListClass="custom-dot-list-style"
+                    itemClass="carousel-item-padding-40-px"
+                >
+
+                    {
+                        doctors.map(doctor => <DisplayDoctor key={doctor.key} doctor={doctor}></DisplayDoctor>)
+                    }
+                </Carousel>
+
+            </Row>
             <Row>
-           <h1>Meet Our Doctors</h1>
-              <Col lg={6} md={6} s={12}>
-              
-              
-              </Col>
+                <h1 className='title-div'>Latest News</h1>
+                <Col lg={6} md={6} s={12}>
 
-            </Row>
-            <Row>
-           <h1>Latest News</h1>
-              <Col lg={6} md={6} s={12}>
-              
-              
-              </Col>
+
+                </Col>
 
             </Row>
 
 
-           
+
 
 
         </Container>

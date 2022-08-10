@@ -1,0 +1,17 @@
+.car-description {
+
+    align-content: left;
+}
+
+.car-description p {
+    font-size: 14px;
+    padding: none;
+    margin: none;
+    
+}
+
+#doctor-card:hover {
+    box-shadow: 5px 5px 2px 2px rgba(8, 8, 8, 0.404);
+    width: '20rem';
+    border:4px solid rgba(9, 32, 165, 0.918);
+}

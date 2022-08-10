@@ -7,9 +7,7 @@
         "education": "MBBS, MD(Pediatrics)",
         "age": "36",
         "star": 4.5,
-        
-        "img": "http://asianitbd.com/wp/mediplus/wp-content/uploads/2016/08/single-doctor.jpg",
-        
+        "img": "https://ucmscdn.healthgrades.com/d7/2c/c955d450489b9201cc1304a72bda/image-doctor-reading-patients-chart.jpg",
         "consultationTime": "5-18",
         "day": "Mon, Tue, Fri"
     },
@@ -17,11 +15,11 @@
         "key": "002",
         "category": "Heart Specialist",
         "name": "Dr. Rashed Kabir",
-        "specialist": "Neurology, Consultant",
-        "education": "MBBS, MD, FCPS",
+        "specialist": "Surgeon",
+        "education": "MBBS, MD",
         "age": "38",
         "star": 5,
-        "img": "https://images-na.ssl-images-amazon.com/images/I/415oziPFA0L._AC_US218_.jpg",
+        "img": "https://doctors.fortishealthcare.com/uploads/assets/doctors/2019/12/1577422874profile.png",
         "consultationTime": "15-20",
         "day": " Thursday, Friday"
     },
@@ -45,10 +43,20 @@
         "education": "MBBS, FRCPS",
         "age": "35",
         "star": 5,
-        "img": "https://www.murray-dental.com/images/profile-jandu.jpg",
+        "img": "https://emirateshospitals.ae/wp-content/uploads/2022/06/Gynecology-Dr-Ripal-Madnani-Specialist-Gynecologist.png",
+        "consultationTime": "13-19",
+        "day": " Wednesday, Friday"
+    },
+    {
+        "key": "005",
+        "category": "Eye Specialist",
+        "name": "Dr. Marcel",
+        "specialist": "Surgery, Ophthalmologists",
+        "education": "MBBS,DO, FRCPS",
+        "age": "36",
+        "star": 5,
+        "img": "https://www.shifa.com.pk/wp-content/uploads/2020/02/Opthalmology-1024x683.jpg",
         "consultationTime": "13-19",
         "day": " Wednesday, Friday"
     }
-
-
 ]
