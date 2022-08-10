@@ -1,7 +1,7 @@
 import React from 'react';
 import { Container, Navbar, Nav,NavDropdown } from 'react-bootstrap';
 import 'bootstrap/dist/css/bootstrap.min.css';
-
+import { Link } from 'react-router-dom';
 import './Header.css'
 
 import bannerimg1 from '../../Images/Banner/Banner3.jpg'
@@ -12,11 +12,13 @@ const Header = () => {
         <div  className="header">
         <Navbar collapseOnSelect expand="lg"  variant="dark">
         <Container>
-          <Navbar.Brand href="#home">React-Bootstrap</Navbar.Brand>
+          <Navbar.Brand ><Nav.Link as={Link} to="home" > MEDikament
+          </Nav.Link></Navbar.Brand>
           <Navbar.Toggle aria-controls="responsive-navbar-nav" />
           <Navbar.Collapse id="responsive-navbar-nav">
             <Nav className="me-auto">
-              <Nav.Link href="#features">Home</Nav.Link>
+            <Nav.Link as={Link} to="home" > Home
+          </Nav.Link>
               <Nav.Link href="#pricing">Services</Nav.Link>
               <NavDropdown title="Doctor Profile" id="collasible-nav-dropdown">
                 <NavDropdown.Item href="#action/3.1">Eye specialist</NavDropdown.Item>

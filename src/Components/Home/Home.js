@@ -16,6 +16,7 @@ import genHealthImg from '../../Images/GneralHealth.jpg';
 import DentalCareImg from '../../Images/DentalCare.jpg';
 import HeartImg from '../../Images/HeartTreatment.jpg';
 import FamilyImg from '../../Images/family.jpg';
+import ServiceImg from '../../Images/service.jpg';
 import PhotoAlbum from "react-photo-album";
 
 
@@ -23,18 +24,18 @@ import PhotoAlbum from "react-photo-album";
 
 const Home = () => {
 
-    const photos = [
-        {
-            src: {genHealthImg},
-            width: 800,
-            height: 600
-        },
-        {
-            src: { HeartImg },
-            width: 1600,
-            height: 900
-        }
-    ];
+    // const photos = [
+    //     {
+    //         src: {genHealthImg},
+    //         width: 800,
+    //         height: 600
+    //     },
+    //     {
+    //         src: { HeartImg },
+    //         width: 1600,
+    //         height: 900
+    //     }
+    // ];
     return (
         <Container className="container-Home">
             <Banner></Banner>
@@ -174,18 +175,45 @@ const Home = () => {
 
 
             </Row>
-            <Col lg={6} md={6} s={12} className="Specialize-div">
-
-            </Col>
-            <Col lg={6} md={6} s={12} className="Specialize-div">
-                <PhotoAlbum layout="rows" photos={photos} />
-            </Col>
-
-
             
+
             <Row>
+            <Col lg={6} md={6} s={12} className="Specialize-div">
+               <div>
+                <h1>Why Choos Us? </h1>
+
+                <ul>
+                    <li>We are always carefull to our patient and service</li>
+                    <li>Book and appoinment with any specialist anytime</li>
+                    <li>We offer lot of service in a best price</li>
+                    <li>Online payment seystem with different method</li>
+                </ul>
+               </div>
+            </Col>
+            <Col lg={6} md={6} s={12} className="Specialize-div">
+            <Image fluid src={ServiceImg} alt=""></Image>  
+            </Col>
             </Row>
 
+            <Row>
+           <h1>Meet Our Doctors</h1>
+              <Col lg={6} md={6} s={12}>
+              
+              
+              </Col>
+
+            </Row>
+            <Row>
+           <h1>Latest News</h1>
+              <Col lg={6} md={6} s={12}>
+              
+              
+              </Col>
+
+            </Row>
+
+
+           
 
 
         </Container>
