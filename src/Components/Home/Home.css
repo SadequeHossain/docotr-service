@@ -1,0 +1,57 @@
+.container-Home {
+    /* border: 2px Solid red; */
+}
+
+.description-div1 {
+    background-color: #008cffe1;
+    color: white;
+    text-align: left;
+    padding: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.description-div2 {
+    background-color: #061864f5;
+    color: white;
+    text-align: left;
+    padding: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+}
+
+.Specialize-div{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+    text-align: justify;
+}
+
+.blue-header{
+    color: #008cffe1;
+}
+
+.title-div{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 50px; 
+    margin-bottom: 50px;
+    color: #008cff;
+    
+}
+
+.app-div{
+    background-image: url(../../Images/Banner/Banner3.jpg);
+ color:white;
+    /* height: 30vh; */
+    background-repeat: no-repeat !important;
+    background-size: cover !important;
+
+    margin-top: 50px;
+    margin-bottom: 50px;
+}

@@ -1,0 +1,9 @@
+.header {
+
+    background-image: url(../../Images/Banner/Banner3.jpg);
+
+    height: 10vh;
+    background-repeat: no-repeat !important;
+    background-size: cover !important;
+    /*strech to fit navbar border*/
+}
