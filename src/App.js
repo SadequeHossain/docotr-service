@@ -7,6 +7,9 @@ import Home from './Components/Home/Home';
 import Doctors from './Components/Doctors/Doctors';
 import { useState, createContext } from 'react';
 import { useEffect } from 'react';
+import Services from './Components/Services/Services';
+import Login from './Components/Login/Login';
+import Register from './Components/Register/Register';
 
 
 
@@ -40,14 +43,15 @@ function App() {
 
         <Routes>
 
+          <Route path="/" element={<Home></Home>}></Route>
           <Route path="/home" element={<Home></Home>}>
           </Route>
           <Route path="/doctor" element={<Doctors></Doctors>}>
-            <Route path="/doctor/:doctorId"></Route>
-
-
           </Route>
-
+          <Route path="/doctor/:doctorId" element={<Doctors></Doctors>}     ></Route>
+          <Route path="/services" element={<Services></Services>}></Route>
+          <Route path="/login" element={<Login></Login>}></Route>
+          <Route path="/register" element={<Register></Register>}></Route>
         </Routes>
 
       </BrowserRouter>

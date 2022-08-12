@@ -20,7 +20,8 @@ const Header = () => {
             <Nav.Link as={Link} to="home" > Home
           </Nav.Link>
               <Nav.Link as={Link} to="doctor">Doctors</Nav.Link>
-              <NavDropdown title="Doctor Profile" id="collasible-nav-dropdown">
+              <Nav.Link as={Link} to="services">Services</Nav.Link>
+              {/* <NavDropdown title="Doctor Profile" id="collasible-nav-dropdown">
                 <NavDropdown.Item href="#action/3.1">Eye specialist</NavDropdown.Item>
                 <NavDropdown.Item href="#action/3.2">
                   Dentis
@@ -30,11 +31,11 @@ const Header = () => {
                 <NavDropdown.Item href="#action/3.4">
                  
                 </NavDropdown.Item>
-              </NavDropdown>
+              </NavDropdown> */}
             </Nav>
             <Nav>
-              <Nav.Link href="#deets">Book an Apponitment</Nav.Link>
-              <Nav.Link eventKey={2} href="#memes">
+              <Nav.Link as={Link} to="register">Register</Nav.Link>
+              <Nav.Link as={Link} to="login">
                 LogIn
               </Nav.Link>
             </Nav>

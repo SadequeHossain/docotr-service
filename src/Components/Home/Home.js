@@ -1,4 +1,4 @@
-import React, { useContext } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import Banner from '../Banner/Banner';
 // import Container from 'react-bootstrap/Container';
 import { Container, Row, Col } from 'react-bootstrap';
@@ -21,12 +21,17 @@ import PhotoAlbum from "react-photo-album";
 import Carousel from 'react-multi-carousel';
 import { UserContext } from '../../App';
 import DisplayDoctor from '../hooks/DisplayDoctors/DisplayDoctor';
-
+import { useParams } from 'react-router-dom';
 
 
 
 const Home = () => {
+
     const doctors = useContext(UserContext);
+
+
+    
+    
 
     const responsive = {
         desktop: {
@@ -57,6 +62,10 @@ const Home = () => {
     //         height: 900
     //     }
     // ];
+
+    // 
+
+     
     return (
         <Container className="container-Home">
             <Banner></Banner>

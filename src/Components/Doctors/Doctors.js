@@ -1,17 +1,21 @@
 import React, { useContext, useState } from 'react';
 import { UserContext } from '../../App';
-import { useParams } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 import Carousel from 'react-multi-carousel';
 import 'react-multi-carousel/lib/styles.css';
+import DateTimePicker from 'react-datetime-picker';
+
 
 import './Doctors.css'
 import DisplayDoctor from '../hooks/DisplayDoctors/DisplayDoctor';
-import { Container, Row, Col } from 'react-bootstrap';
+import { Container, Row, Col, Button, Image, Card, Form } from 'react-bootstrap';
 import { useEffect } from 'react';
 const Doctors = () => {
 
 
     const doctors = useContext(UserContext);
+
+
     const responsive = {
         desktop: {
             breakpoint: { max: 3000, min: 1024 },
@@ -30,15 +34,96 @@ const Doctors = () => {
         }
     };
 
-    const { doctorId } = useParams();
 
-   
+
+
+    const { doctorId } = useParams();
+    const [dr, setDoctor] = useState([])
+    let navigate = useNavigate();
+
+    useEffect(() => {
+
+        doctors.map(doctor => {
+            if (doctor.key == doctorId) {
+                setDoctor(doctor)
+            }
+        })
+
+    }, [])
+    const { name, img, category, education, day, consultationTime, specialist } = dr
+    console.log(dr)
+    const handleClick = () => {
+        navigate('/home')
+
+    }
+
+    const [value, onChange] = useState(new Date());
+
     return (
 
 
         <Container>
-            <Row>
-                <h1>Doctor ID: {doctorId} </h1>
+            <Row >
+                <Col lg={6} md={6} s={12} className="Specialize-div">
+                    <Card style={{ width: '25rem' }}>
+                        <Card.Img variant="top" src={img} />
+                        <Card.Body>
+                            <Card.Title>{name}
+
+                                <small style={{ fontSize: '10px' }}> {education} </small>
+
+
+                            </Card.Title>
+                            <Card.Text>
+                                Specialist in {specialist}
+                            </Card.Text>
+                            <Card.Text>
+                                Catagory: {category}
+                            </Card.Text>
+                            Visting Time: {day}, {consultationTime} O'Clock
+                        </Card.Body>
+                    </Card>
+
+                </Col>
+
+                <Col lg={6} md={6} s={12} className="Specialize-div">
+
+                    <Form className="Register-form">
+                        <Form.Group className="mb-3" controlId="formBasicEmail">
+                            <Form.Label>Full Name</Form.Label>
+                            <Form.Control type="text" placeholder="Enter Name" />
+                            <Form.Text className="text-muted">
+                                Please enter your Full Name.
+                            </Form.Text>
+                        </Form.Group>
+                        <Form.Group className="mb-3" controlId="formBasicEmail">
+                            <Form.Label>Email address</Form.Label>
+                            <Form.Control type="email" placeholder="Enter email" />
+                            <Form.Text className="text-muted">
+                                We'll never share your email with anyone else.
+                            </Form.Text>
+                        </Form.Group>
+                        <Form.Group className="mb-3" controlId="formBasicEmail">
+                            <DateTimePicker onChange={onChange} value={value} />
+
+                            <Form.Text className="text-muted">
+                                Please select your visiting Time
+                            </Form.Text>
+                        </Form.Group>
+
+                        <Form.Group className="mb-3" controlId="formBasicPassword">
+                            <Form.Label>Password</Form.Label>
+                            <Form.Control type="password" placeholder="Password" />
+                        </Form.Group>
+                        <Form.Group className="mb-3" controlId="formBasicCheckbox">
+                            <Form.Check type="checkbox" label="Check me out" />
+                        </Form.Group>
+                        <Button variant="primary" type="submit">
+                            Book an Appoitment
+                        </Button>
+                    </Form>
+
+                </Col >
             </Row>
             <Row>
                 <Carousel
@@ -67,7 +152,7 @@ const Doctors = () => {
                     }
                 </Carousel>
             </Row>
-
+            <Button onClick={handleClick} variant="primary" >RETURN Home</Button>
         </Container>
     );
 };
