@@ -1,5 +1,5 @@
 import React from 'react';
-import { Container, Navbar, Nav,NavDropdown } from 'react-bootstrap';
+import { Container, Navbar, Nav, NavDropdown } from 'react-bootstrap';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { Link } from 'react-router-dom';
 import './Header.css'
@@ -7,18 +7,18 @@ import './Header.css'
 import bannerimg1 from '../../Images/Banner/Banner3.jpg'
 
 const Header = () => {
-    return (
+  return (
 
-        <div  className="header">
-        <Navbar collapseOnSelect expand="lg"  variant="dark">
+    <div className="header">
+      <Navbar collapseOnSelect expand="lg" variant="dark">
         <Container>
-          <Navbar.Brand ><Nav.Link as={Link} to="home" > MEDikament
+          <Navbar.Brand ><Nav.Link as={Link} to="/" > MEDikament
           </Nav.Link></Navbar.Brand>
           <Navbar.Toggle aria-controls="responsive-navbar-nav" />
           <Navbar.Collapse id="responsive-navbar-nav">
             <Nav className="me-auto">
-            <Nav.Link as={Link} to="home" > Home
-          </Nav.Link>
+              <Nav.Link as={Link} to="home" > Home
+              </Nav.Link>
               <Nav.Link as={Link} to="doctor">Doctors</Nav.Link>
               <Nav.Link as={Link} to="services">Services</Nav.Link>
               {/* <NavDropdown title="Doctor Profile" id="collasible-nav-dropdown">
@@ -43,8 +43,8 @@ const Header = () => {
         </Container>
       </Navbar>
 
-      </div>
-    );
+    </div>
+  );
 };
 
 export default Header;
