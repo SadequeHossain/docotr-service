@@ -37,7 +37,7 @@ const Banner = () => {
                         <h4>We deserve better Than Any Other</h4>
                         <p>Not sure what is going on?</p>
                         <p> Book an appointment to chekup</p>
-                        <button class="btn btn-primary">Check Appointment</button>
+                        <button className="btn btn-primary">Check Appointment</button>
                         
                     </Carousel.Caption>
                 </Carousel.Item>

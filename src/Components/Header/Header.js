@@ -1,13 +1,41 @@
 import React from 'react';
-import { Container, Navbar, Nav, NavDropdown } from 'react-bootstrap';
+import { Container, Navbar, Nav, NavDropdown, Button } from 'react-bootstrap';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { Link } from 'react-router-dom';
 import './Header.css'
 
 import bannerimg1 from '../../Images/Banner/Banner3.jpg'
+import useAuth from '../hooks/useAuth';
 
 const Header = () => {
+  const { firebaseData } = useAuth();
+
+  const { user } = firebaseData
+  const loginStatus = (status) => {
+    if (user.email) {
+      status = true
+
+    }
+    else {
+      status = false;
+    }
+
+    return status;
+  }
+
+  console.log('Login status is', loginStatus(), user)
+
+  const handleLogout = () => {
+    const SignInStatus = loginStatus()
+    if (SignInStatus == true) {
+      firebaseData.logOut()
+
+    }
+  }
+
+
   return (
+
 
     <div className="header">
       <Navbar collapseOnSelect expand="lg" variant="dark">
@@ -35,8 +63,12 @@ const Header = () => {
             </Nav>
             <Nav>
               <Nav.Link as={Link} to="register">Register</Nav.Link>
+
               <Nav.Link as={Link} to="login">
-                LogIn
+                {user.email ? <Button onClick={handleLogout}>LogOut</Button> : <Button>LogIn</Button>
+
+
+                }
               </Nav.Link>
             </Nav>
           </Navbar.Collapse>

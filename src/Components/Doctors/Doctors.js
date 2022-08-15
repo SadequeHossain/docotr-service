@@ -10,10 +10,11 @@ import './Doctors.css'
 import DisplayDoctor from '../hooks/DisplayDoctors/DisplayDoctor';
 import { Container, Row, Col, Button, Image, Card, Form } from 'react-bootstrap';
 import { useEffect } from 'react';
+import { userContext } from '../hooks/UseContextProvider';
 const Doctors = () => {
 
 
-    const doctors = useContext(UserContext);
+    const {doctors} = useContext(userContext);
 
 
     const responsive = {

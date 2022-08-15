@@ -2,12 +2,13 @@ import React, { useState } from 'react';
 
 import { Button, Col, Form, Row } from 'react-bootstrap';
 
-import { getAuth, GoogleAuthProvider, signInWithPopup, createUserWithEmailAndPassword } from "firebase/auth";
+import { getAuth, GoogleAuthProvider, signInWithPopup, createUserWithEmailAndPassword, signInWithEmailAndPassword } from "firebase/auth";
 import initializeAuthentication from '../hooks/firebase.init';
 
 import './login.css'
 import { FaGoogle } from 'react-icons/fa';
-import { Link } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
+
 
 initializeAuthentication();
 const provider = new GoogleAuthProvider();
@@ -16,9 +17,30 @@ const provider = new GoogleAuthProvider();
 
 const Login = () => {
     const [user, setUser] = useState({})
+    const auth = getAuth();
+    const navigate = useNavigate();
+    const location = useLocation();
 
+    console.log('come from', location.state?.from)
+
+
+    const redirect_url = location.state?.from || '/home'
+
+
+    const [email, setEmail] = useState()
+    const [passWord, setPassword] = useState()
+
+    const handleEmailChange = (e) => {
+        setEmail(e.target.value)
+
+        console.log(e.target.value)
+    }
+
+    const handlePassWord = e => {
+        setPassword(e.target.value)
+        console.log(e.target.value)
+    }
     const handleGoogleSignIn = () => {
-        const auth = getAuth();
 
         signInWithPopup(auth, provider)
             .then((result) => {
@@ -36,6 +58,7 @@ const Login = () => {
                 };
 
                 setUser(logeInUser);
+                navigate(redirect_url)
 
             })
 
@@ -46,8 +69,31 @@ const Login = () => {
 
     }
 
+    const handleUserSignIn = () => {
 
-    console.log(user)
+
+
+
+        signInWithEmailAndPassword(auth, email, passWord)
+            .then(result => {
+                // Signed in 
+                const user = result.user;
+                navigate(redirect_url)
+                console.log(user)
+            })
+            .catch(err => {
+                console.log(err.message)
+            })
+
+
+
+
+        console.log('clicked')
+
+
+
+    }
+
     return (
         <Row>
             <Col lg={12} md={6} s={12} className="Specialize-div">
@@ -56,7 +102,7 @@ const Login = () => {
                 <div className="login-form">
                     <Form>
                         <h5> Sign in Please</h5>
-                        <Form.Group className="mb-3" controlId="formBasicEmail">
+                        <Form.Group onBlur={handleEmailChange} className="mb-3" controlId="formBasicEmail">
                             <Form.Label>Email address</Form.Label>
                             <Form.Control type="email" placeholder="Enter email" />
                             <Form.Text className="text-muted">
@@ -64,7 +110,7 @@ const Login = () => {
                             </Form.Text>
                         </Form.Group>
 
-                        <Form.Group className="mb-3" controlId="formBasicPassword">
+                        <Form.Group onBlur={handlePassWord} className="mb-3" controlId="formBasicPassword">
                             <Form.Label>Password</Form.Label>
                             <Form.Control type="password" placeholder="Password" />
                         </Form.Group>
@@ -72,7 +118,7 @@ const Login = () => {
                             <Form.Check type="checkbox" label="Stay Login" />
                         </Form.Group>
 
-                        <Button variant="primary">
+                        <Button onClick={handleUserSignIn} variant="primary">
                             Login
                         </Button>
                         <br />
@@ -83,7 +129,7 @@ const Login = () => {
                         <p>Did not register yet?</p>
 
                         <Link to="/register">
-                            <Button variant="primary" type="submit">
+                            <Button on variant="primary" type="submit">
                                 Signup
                             </Button>
                         </Link>

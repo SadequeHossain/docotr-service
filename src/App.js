@@ -10,36 +10,42 @@ import { useEffect } from 'react';
 import Services from './Components/Services/Services';
 import Login from './Components/Login/Login';
 import Register from './Components/Register/Register';
+import UseContextProvider, { userContext } from './Components/hooks/UseContextProvider';
+import PrivateRoute from './Components/hooks/PrivateRoute';
+import useFirebase from './Components/hooks/useFirebase';
+import PrivateRouteExtra from './Components/hooks/PrivateRouteExtra';
+
+// import '../src/Components/hooks/useContextProvider'
 
 
-
-
-export const UserContext = createContext('user');
+// export const UserContext = createContext('user');
 function App() {
 
+  // useFirebase()
+  // const [doctors, setDoctors] = useState([]);
 
-  const [doctors, setDoctors] = useState([]);
+  // useEffect(() => {
+  //   fetch('./doctors.json')
+  //     .then(res => res.json())
+  //     .then(data => {
+  //       setDoctors(data);
 
-  useEffect(() => {
-    fetch('./doctors.json')
-      .then(res => res.json())
-      .then(data => {
-        setDoctors(data);
-
-      });
-  }, []);
+  //     });
+  // }, []);
 
 
   // console.log(doctors);
 
 
-
+  // console.log('this is from app', userContext)
 
 
   return (
-    <UserContext.Provider value={doctors} className="App">
+    <UseContextProvider>
       <BrowserRouter>
         <Header></Header>
+
+
 
         <Routes>
 
@@ -49,13 +55,25 @@ function App() {
           <Route path="/doctor" element={<Doctors></Doctors>}>
           </Route>
           <Route path="/doctor/:doctorId" element={<Doctors></Doctors>}     ></Route>
-          <Route path="/services" element={<Services></Services>}></Route>
+
+
+
+          {/* <Route path="/services" element={<Services></Services>}></Route> */}
           <Route path="/login" element={<Login></Login>}></Route>
           <Route path="/register" element={<Register></Register>}></Route>
+
+          <Route
+            path="/services"
+            element={<PrivateRouteExtra>
+              <Services></Services>
+            </PrivateRouteExtra>}
+          ></Route>
         </Routes>
 
       </BrowserRouter>
-    </UserContext.Provider>
+
+    </UseContextProvider>
+
   );
 }
 

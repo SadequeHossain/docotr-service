@@ -22,14 +22,15 @@ import Carousel from 'react-multi-carousel';
 import { UserContext } from '../../App';
 import DisplayDoctor from '../hooks/DisplayDoctors/DisplayDoctor';
 import { useParams } from 'react-router-dom';
+import { userContext } from '../hooks/UseContextProvider';
 
 
 
 const Home = () => {
 
-    const doctors = useContext(UserContext);
+    const {doctors} = useContext(userContext);
 
-
+       console.log('doctors from home', useContext(userContext))
     
     
 

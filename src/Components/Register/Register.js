@@ -16,12 +16,13 @@ const Register = () => {
     const [value, onChange] = useState(new Date());
     const [email, setEmail] = useState()
     const [passWord, setPassword] = useState()
+    const [displayName, setDisplayName] = useState()
 
 
-    
+
     const handleRegistration = (e) => {
         const auth = getAuth();
-        createUserWithEmailAndPassword(auth, email, passWord)
+        createUserWithEmailAndPassword(auth, email, passWord,displayName)
             .then(result => {
                 // Signed in 
                 const user = result.user;
@@ -43,7 +44,11 @@ const Register = () => {
 
     const handlePassWord = e => {
         setPassword(e.target.value)
-        console.log(e.target.value)   
+        console.log(e.target.value)
+    }
+    const handleDisplayName = e => {
+        setDisplayName(e.target.value)
+        console.log(e.target.value)
     }
     return (
         <Row>
@@ -54,7 +59,7 @@ const Register = () => {
 
                 <Form className="Register-form" onSubmit={handleRegistration}>
                     <h5>Please Register with your credentials</h5>
-                    <Form.Group className="mb-3" controlId="formBasicName">
+                    <Form.Group onBlur={handleDisplayName} className="mb-3" controlId="formBasicName">
                         <Form.Label>Full Name</Form.Label>
                         <Form.Control type="name" placeholder="Enter Name" />
                         <Form.Text className="text-muted">
@@ -80,18 +85,18 @@ const Register = () => {
                         <Form.Label>Password</Form.Label>
                         <Form.Control type="password" placeholder="Password" />
                     </Form.Group>
-                   
-                    <Button variant="primary" type="submit" >
+
+                    <Button  variant="primary" type="submit" >
                         Register
                     </Button>
 
                     <p>Already Regsitered?</p>
 
                     <Link to="/login">
-                            <Button variant="primary" type="submit">
-                                Login
-                            </Button>
-                        </Link>
+                        <Button variant="primary" type="submit">
+                            Login
+                        </Button>
+                    </Link>
                 </Form>
 
             </Col >
