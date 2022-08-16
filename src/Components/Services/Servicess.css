@@ -1,0 +1,7 @@
+.magazine-div{
+    /* border: 2px solid red; */
+    padding: 20px;
+    display: flex;
+    color:white;
+    background-image: url(../../Images/Banner/Banner3.jpg);
+}

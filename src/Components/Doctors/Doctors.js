@@ -41,7 +41,7 @@ const Doctors = () => {
     const { doctorId } = useParams();
     const [dr, setDoctor] = useState([])
     let navigate = useNavigate();
-
+console.log(doctorId)
     useEffect(() => {
 
         doctors.map(doctor => {
@@ -52,7 +52,7 @@ const Doctors = () => {
 
     }, [])
     const { name, img, category, education, day, consultationTime, specialist } = dr
-    console.log(dr)
+    console.log('This is dr',dr.name)
     const handleClick = () => {
         navigate('/home')
 
@@ -60,6 +60,8 @@ const Doctors = () => {
 
     const [value, onChange] = useState(new Date());
 
+
+console.log('Dr returned',dr)
     return (
 
 
@@ -69,7 +71,7 @@ const Doctors = () => {
                     <Card style={{ width: '25rem' }}>
                         <Card.Img variant="top" src={img} />
                         <Card.Body>
-                            <Card.Title>{name}
+                            <Card.Title>{dr.name}
 
                                 <small style={{ fontSize: '10px' }}> {education} </small>
 

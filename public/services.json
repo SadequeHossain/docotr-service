@@ -1,0 +1,38 @@
+[
+    {
+        "key": "001",
+        "servicename": "Dental Treatment",
+        "description": "Are you looking for a professional dentist with affordable prices? High quality dentures do not have to be expensive. Dr. Hager and his outstanding dentists in Konstanz and Bietingen specialize in dental implants, veneers, teeth whitening and crowns, which patients from Germany and Switzerland have appreciated since 1983.",
+        "img": "https://sp-ao.shortpixel.ai/client/to_webp,q_glossy,ret_img/https://softdentis.com/wp-content/uploads/2020/01/leczenie1.jpg"
+    },
+    {
+        "key": "002",
+        "servicename": "Cardiology",
+        "description": "Are you looking for a professional dentist with affordable prices? High quality dentures do not have to be expensive. Dr. Hager and his outstanding dentists in Konstanz and Bietingen specialize in dental implants, veneers, teeth whitening and crowns, which patients from Germany and Switzerland have appreciated since 1983.",
+        "img": "https://upload.wikimedia.org/wikipedia/commons/thumb/6/67/Heart_diagram_blood_flow_en.svg/1200px-Heart_diagram_blood_flow_en.svg.png"
+    },
+    {
+        "key": "003",
+        "servicename": "X-Ray",
+        "description": "RAY-LAB GmbH & Co. KG has developed into a broadly positioned international company since its founding in 1998. What started with the business area of industrial X-ray analysis in 2D and 3D computed tomography and quality analysis was quickly expanded to include other services in the field of NDT(Non Destructive Testing).",
+        "img": "https://www.aaraclinicallab.in/images/x-ray.jpg"
+    },
+    {
+        "key": "004",
+        "servicename": "Neurology",
+        "description": "Neurologists treat nervous system conditions. This includes conditions that impact your brain, like concussions or seizures, but it doesn't include mental health conditions like depression. Neurologists specialize in physical conditions that are caused by damage or disease to your nervous system.",
+        "img": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQc4Lj7UBYuM2wwRRVRnAds0Q22x1RTfW5nVe6_M-a-ssp8JbC64EhnzersFvdBNxurT24&usqp=CAU"
+    },
+    {
+        "key": "005",
+        "servicename": "Pregnency",
+        "description": "We offers an innovative approach to help mothers and infants deal with the physical, emotional, and social problems caused by addiction. CAP, an outpatient program with an available overnight housing unit for patients requiring  a recovery-oriented domicile, provides a comprehensive, coordinated, and multidisciplinary approach to one of our greatest problems today: drug-dependent mothers and their drug-affected babies.",
+        "img": "https://www.addictionhope.com/wp-content/uploads/2015/07/Fotolia_71064672_Subscription_Monthly_XXL-1024x683.jpg"
+    },
+    {
+        "key": "006",
+        "servicename": "Primary Health Care",
+        "description": "Primary health care (PHC) addresses the majority of a person's health needs throughout their lifetime. This includes physical, mental and social well-being and it is people-centred rather than disease-centred.",
+        "img": "https://occpartners.com/wp-content/uploads/2015/09/nursing-800.jpg"
+    }
+]

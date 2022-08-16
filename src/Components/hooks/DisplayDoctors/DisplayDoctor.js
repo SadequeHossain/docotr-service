@@ -19,8 +19,8 @@ function DisplayDoctor(props) {
     }
 
     return (
-        <Col  className="Specialize-div" >
-            <Card style={{ width: '18rem', height: 'auto', backgroundColor: '#008cff44' }} id="doctor-card">
+        <Col className="Specialize-div" >
+            <Card style={{ width: '18rem', height: 'auto', textAlign: 'center' }} id="doctor-card">
                 <Card.Img style={{ height: '200px' }} variant="top" src={img} />
                 <Card.Body>
                     <Card.Title>{name} <small style={{ fontSize: '10PX' }}>{education} </small></Card.Title>
