@@ -1,6 +1,6 @@
-import React, { useContext, useState } from 'react';
+import React, { useContext, useRef, useState } from 'react';
 import { UserContext } from '../../App';
-import { useNavigate, useParams } from 'react-router-dom';
+import { Link, useNavigate, useParams } from 'react-router-dom';
 import Carousel from 'react-multi-carousel';
 import 'react-multi-carousel/lib/styles.css';
 import DateTimePicker from 'react-datetime-picker';
@@ -14,8 +14,8 @@ import { userContext } from '../hooks/UseContextProvider';
 const Doctors = () => {
 
 
-    const {doctors} = useContext(userContext);
-
+    const { doctors } = useContext(userContext);
+    const childRef = useRef();
 
     const responsive = {
         desktop: {
@@ -38,30 +38,48 @@ const Doctors = () => {
 
 
 
-    const { doctorId } = useParams();
+    const { doctorId } = useParams(1);
     const [dr, setDoctor] = useState([])
     let navigate = useNavigate();
-console.log(doctorId)
-    useEffect(() => {
+    console.log(doctorId)
+    // useEffect(() => {
 
-        doctors.map(doctor => {
-            if (doctor.key == doctorId) {
-                setDoctor(doctor)
-            }
-        })
+    //     doctors.map(doctor => {
+    //         if (doctor.key == doctorId) {
+    //             setDoctor(doctor)
+    //         }
+    //     })
 
-    }, [])
+    // }, [])
+
+    const addProfile=() => {
+        console.log('clicked')
+    }
+
+    const handleProfile = (dr) => {
+
+        if (doctorId) {
+            doctors.map(doctor => {
+                if (doctor.key == doctorId) {
+                    setDoctor(doctor)
+                }
+            })
+        }
+        return dr
+    }
+
+
+    console.log('This is Dr', dr)
     const { name, img, category, education, day, consultationTime, specialist } = dr
-    console.log('This is dr',dr.name)
-    const handleClick = () => {
-        navigate('/home')
-
+    console.log('This is dr', dr.name)
+    const handleAppointment = () => {
+        navigate('reg')
     }
 
     const [value, onChange] = useState(new Date());
 
 
-console.log('Dr returned',dr)
+
     return (
 
 
@@ -85,23 +103,24 @@ console.log('Dr returned',dr)
                             </Card.Text>
                             Visting Time: {day}, {consultationTime} O'Clock
                         </Card.Body>
+                        <Button visible="flase" onClick={handleProfile} variant="primary" >Show Profile</Button>
                     </Card>
 
                 </Col>
 
                 <Col lg={6} md={6} s={12} className="Specialize-div">
 
-                    <Form className="Register-form">
+                    <Form className="Register-form" onSubmit={handleAppointment}>
                         <Form.Group className="mb-3" controlId="formBasicEmail">
                             <Form.Label>Full Name</Form.Label>
-                            <Form.Control type="text" placeholder="Enter Name" />
+                            <input required type="text" placeholder="Please enter name" /> <br />
                             <Form.Text className="text-muted">
                                 Please enter your Full Name.
                             </Form.Text>
                         </Form.Group>
                         <Form.Group className="mb-3" controlId="formBasicEmail">
                             <Form.Label>Email address</Form.Label>
-                            <Form.Control type="email" placeholder="Enter email" />
+                            <input required type="email" placeholder="Please enter Email" /> <br />
                             <Form.Text className="text-muted">
                                 We'll never share your email with anyone else.
                             </Form.Text>
@@ -119,7 +138,7 @@ console.log('Dr returned',dr)
                             <Form.Control type="password" placeholder="Password" />
                         </Form.Group>
                         <Form.Group className="mb-3" controlId="formBasicCheckbox">
-                            <Form.Check type="checkbox" label="Check me out" />
+                            <Form.Check type="checkbox" label="Keep my info for next visite" />
                         </Form.Group>
                         <Button variant="primary" type="submit">
                             Book an Appoitment
@@ -151,11 +170,11 @@ console.log('Dr returned',dr)
                 >
 
                     {
-                        doctors.map(doctor => <DisplayDoctor key={doctor.key} doctor={doctor}></DisplayDoctor>)
+                        doctors.map(doctor => <DisplayDoctor key={doctor.key} doctor={doctor} addProfile={addProfile}></DisplayDoctor>)
                     }
                 </Carousel>
             </Row>
-            <Button onClick={handleClick} variant="primary" >RETURN Home</Button>
+
         </Container>
     );
 };

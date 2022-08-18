@@ -1,5 +1,8 @@
 .magazine-div{
     /* border: 2px solid red; */
+
+    margin-top:50px;
+    margin-bottom:50px;
     padding: 20px;
     display: flex;
     color:white;

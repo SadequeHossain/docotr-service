@@ -14,6 +14,9 @@ import UseContextProvider, { userContext } from './Components/hooks/UseContextPr
 import PrivateRoute from './Components/hooks/PrivateRoute';
 import useFirebase from './Components/hooks/useFirebase';
 import PrivateRouteExtra from './Components/hooks/PrivateRouteExtra';
+import Footer from './Components/Footer/Footer';
+import NotFound from './Components/NotFound/NotFound';
+import RegSuccess from './Components/RegSuccess/RegSuccess';
 
 // import '../src/Components/hooks/useContextProvider'
 
@@ -47,29 +50,51 @@ function App() {
 
 
 
-        <Routes>
+        <div className="Routes-div">
+          <Routes>
 
-          <Route path="/" element={<Home></Home>}></Route>
-          <Route path="/home" element={<Home></Home>}>
-          </Route>
-          <Route path="/doctor" element={<Doctors></Doctors>}>
-          </Route>
-          <Route path="/doctor/:doctorId" element={<Doctors></Doctors>}     ></Route>
+            <Route path="/" element={<Home></Home>}></Route>
+            <Route path="/home" element={<Home></Home>}>
+            </Route>
+            <Route path="/doctor/reg" element={<RegSuccess></RegSuccess>}></Route>
+            
+            {/* <Route path="/doctor" element={<Doctors></Doctors>}> </Route> */}
+            {/* <Route path="/doctor/:doctorId" element={<Doctors></Doctors>}     ></Route> */}
 
 
 
-          {/* <Route path="/services" element={<Services></Services>}></Route> */}
-          <Route path="/login" element={<Login></Login>}></Route>
-          <Route path="/register" element={<Register></Register>}></Route>
+            {/* <Route path="/services" element={<Services></Services>}></Route> */}
+            <Route path="/login" element={<Login></Login>}></Route>
+            <Route path="/register" element={<Register></Register>}></Route>
 
-          <Route
-            path="/services"
-            element={<PrivateRouteExtra>
-              <Services></Services>
-            </PrivateRouteExtra>}
-          ></Route>
-        </Routes>
+            <Route
+              path="/services"
+              element={<PrivateRouteExtra>
+                <Services></Services>
+              </PrivateRouteExtra>}
+            ></Route>
+            <Route
+              path="/doctor"
+              element={<PrivateRouteExtra>
+                <Doctors></Doctors>
+              </PrivateRouteExtra>}
+            ></Route>
+            <Route
+              path="/doctor/:doctorId"
+              element={<PrivateRouteExtra>
+                <Doctors></Doctors>
+              </PrivateRouteExtra>}
+            ></Route>
 
+
+            <Route path="*" element={<NotFound></NotFound>}></Route>
+
+
+          </Routes>
+
+        </div>
+
+        <Footer></Footer>
       </BrowserRouter>
 
     </UseContextProvider>

@@ -8,14 +8,15 @@ import Card from 'react-bootstrap/Card';
 
 function DisplayDoctor(props) {
 
+
     const { key, name, img, specialist, category, education } = props.doctor
 
     const navigate = useNavigate()
 
-
-
+    console.log('this is handle')
     const handleProfileClick = () => {
         navigate(`/doctor/${key}`)
+
     }
 
     return (
@@ -32,7 +33,9 @@ function DisplayDoctor(props) {
 
                     </div>
 
-                    <Button onClick={handleProfileClick} variant="primary">See Profile</Button>
+                    <Button onClick={() => {
+                        handleProfileClick()
+                    }} variant="primary">See Profile</Button>
 
 
                 </Card.Body>
