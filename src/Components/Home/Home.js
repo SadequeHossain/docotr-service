@@ -21,18 +21,22 @@ import PhotoAlbum from "react-photo-album";
 import Carousel from 'react-multi-carousel';
 import { UserContext } from '../../App';
 import DisplayDoctor from '../hooks/DisplayDoctors/DisplayDoctor';
-import { useParams } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 import { userContext } from '../hooks/UseContextProvider';
 
 
 
 const Home = () => {
 
-    const {doctors} = useContext(userContext);
+    const { doctors } = useContext(userContext);
 
-       console.log('doctors from home', useContext(userContext))
-    
-    
+    console.log('doctors from home', useContext(userContext))
+
+    const navigate = useNavigate();
+
+    const handleAppointment = () => {
+        navigate('/doctor')
+    }
 
     const responsive = {
         desktop: {
@@ -66,7 +70,7 @@ const Home = () => {
 
     // 
 
-     
+
     return (
         <Container className="container-Home">
             <Banner></Banner>
@@ -83,7 +87,7 @@ const Home = () => {
                     <div >
                         <h2> <MdBookOnline></MdBookOnline> Online Consultation:</h2>
                         <p> Book your online Doctor here</p>
-                        <button className="btn btn-primary">Book Now</button>
+                        <button onClick={handleAppointment} className="btn btn-primary">Book Now</button>
                     </div>
                 </Col>
                 <Col lg={4} className="description-div1">
@@ -91,7 +95,7 @@ const Home = () => {
                     <div >
                         <h1> <RiFirstAidKitLine></RiFirstAidKitLine> Appointment:</h1>
                         <p> Book your online Doctor here</p>
-                        <button className="btn btn-dark">Check Appointment</button>
+                        <button onClick={handleAppointment} className="btn btn-dark">Check Appointment</button>
                     </div>
 
                 </Col>
