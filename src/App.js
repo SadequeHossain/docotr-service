@@ -17,6 +17,7 @@ import PrivateRouteExtra from './Components/hooks/PrivateRouteExtra';
 import Footer from './Components/Footer/Footer';
 import NotFound from './Components/NotFound/NotFound';
 import RegSuccess from './Components/RegSuccess/RegSuccess';
+import ServiceDetails from './Components/ServiceDetails/ServiceDetails';
 
 // import '../src/Components/hooks/useContextProvider'
 
@@ -71,6 +72,12 @@ function App() {
               path="/services"
               element={<PrivateRouteExtra>
                 <Services></Services>
+              </PrivateRouteExtra>}
+            ></Route>
+            <Route
+              path="/servicedetails/:serviceID"
+              element={<PrivateRouteExtra>
+               <ServiceDetails></ServiceDetails>
               </PrivateRouteExtra>}
             ></Route>
             <Route

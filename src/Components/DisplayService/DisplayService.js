@@ -1,30 +1,43 @@
 import React from 'react';
 import { Button, Card, Col } from 'react-bootstrap';
+import { useNavigate, useParams } from 'react-router-dom';
+import ServiceDetails from '../ServiceDetails/ServiceDetails';
 
 const DisplayService = (props) => {
-    const {servicename,description,img}=props.service
+    const { servicename, description, img, key } = props.service
 
-    console.log('This is service',props.service)
+    const navigate = useNavigate()
+
+    const handleService = () => {
+        navigate(`/servicedetails/${key}`)
+
+
+
+
+    }
+
+
     return (
-        <Col lg={4} md={6} s={12}className="Specialize-div" >
-        <Card style={{ width: '18rem', height: 'auto' }} >
-            <Card.Img style={{ height: '200px' }} variant="top" src={img} />
-            <Card.Body>
-                <Card.Title>{servicename} </Card.Title>
-                <div className="car-description">
+        <Col lg={4} md={6} s={12} className="Specialize-div" >
 
-                    <p> {description}</p>
-                    <p></p>
+            <Card style={{ width: '18rem', height: 'auto' }} >
+                <Card.Img style={{ height: '200px' }} variant="top" src={img} />
+                <Card.Body>
+                    <Card.Title>{servicename} </Card.Title>
+                    <div className="car-description">
 
-
-                </div>
-
-                <Button  variant="primary">See Profile</Button>
+                        <p > {description.slice(0, 100)}</p>
 
 
-            </Card.Body>
-        </Card>
-    </Col>
+
+                    </div>
+
+                    <Button onClick={handleService} variant="primary">See More</Button>
+
+
+                </Card.Body>
+            </Card>
+        </Col>
     );
 };
 

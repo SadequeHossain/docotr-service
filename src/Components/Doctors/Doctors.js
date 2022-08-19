@@ -1,4 +1,4 @@
-import React, { useContext, useRef, useState } from 'react';
+import React, { useContext, useRef, useState, useEffect } from 'react';
 import { UserContext } from '../../App';
 import { Link, useNavigate, useParams } from 'react-router-dom';
 import Carousel from 'react-multi-carousel';
@@ -9,7 +9,7 @@ import DateTimePicker from 'react-datetime-picker';
 import './Doctors.css'
 import DisplayDoctor from '../hooks/DisplayDoctors/DisplayDoctor';
 import { Container, Row, Col, Button, Image, Card, Form } from 'react-bootstrap';
-import { useEffect } from 'react';
+// import { useEffect } from 'react';
 import { userContext } from '../hooks/UseContextProvider';
 const Doctors = () => {
 
@@ -38,7 +38,7 @@ const Doctors = () => {
 
 
 
-    const { doctorId } = useParams(1);
+    const { doctorId } = useParams();
     const [dr, setDoctor] = useState([])
     let navigate = useNavigate();
     console.log(doctorId)
@@ -52,26 +52,18 @@ const Doctors = () => {
 
     // }, [])
 
-    const addProfile=() => {
-        console.log('clicked')
-    }
 
-    const handleProfile = (dr) => {
+    useEffect(() => {
+        const doctor = doctors.find(dr => doctorId === dr.key)
+        setDoctor(doctor)
 
-        if (doctorId) {
-            doctors.map(doctor => {
-                if (doctor.key == doctorId) {
-                    setDoctor(doctor)
-                }
-            })
-        }
-        return dr
-    }
+    }, [doctorId])
+
 
 
     console.log('This is Dr', dr)
-    const { name, img, category, education, day, consultationTime, specialist } = dr
-    console.log('This is dr', dr.name)
+
+
     const handleAppointment = () => {
         navigate('reg')
     }
@@ -86,25 +78,38 @@ const Doctors = () => {
         <Container>
             <Row >
                 <Col lg={6} md={6} s={12} className="Specialize-div">
-                    <Card style={{ width: '25rem' }}>
-                        <Card.Img variant="top" src={img} />
-                        <Card.Body>
-                            <Card.Title>{dr.name}
+                    {(dr) ?
 
-                                <small style={{ fontSize: '10px' }}> {education} </small>
+                        (<Card style={{ width: '25rem' }}>
+                            <Card.Img variant="top" src={dr.img} />
+                            <Card.Body>
+                                <Card.Title>{dr.name}
+
+                                    <small style={{ fontSize: '10px' }}> {dr.education} </small>
 
 
-                            </Card.Title>
-                            <Card.Text>
-                                Specialist in {specialist}
-                            </Card.Text>
-                            <Card.Text>
-                                Catagory: {category}
-                            </Card.Text>
-                            Visting Time: {day}, {consultationTime} O'Clock
-                        </Card.Body>
-                        <Button visible="flase" onClick={handleProfile} variant="primary" >Show Profile</Button>
-                    </Card>
+                                </Card.Title>
+                                <Card.Text>
+                                    Specialist in {dr.specialist}
+                                </Card.Text>
+                                <Card.Text>
+                                    Catagory: {dr.category}
+                                </Card.Text>
+                                Visting Time: {dr.day}, {dr.consultationTime} O'Clock
+                            </Card.Body>
+
+                        </Card>) :
+                        (
+                            <h3>Please select a Doctor</h3>
+                        )
+
+                    }
+
+
+
+
+
+
 
                 </Col>
 
@@ -170,7 +175,7 @@ const Doctors = () => {
                 >
 
                     {
-                        doctors.map(doctor => <DisplayDoctor key={doctor.key} doctor={doctor} addProfile={addProfile}></DisplayDoctor>)
+                        doctors.map(doctor => <DisplayDoctor key={doctor.key} doctor={doctor}></DisplayDoctor>)
                     }
                 </Carousel>
             </Row>
